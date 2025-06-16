@@ -6,6 +6,7 @@ import com.example.gbr.dto.SignupRequest;
 import com.example.gbr.model.User;
 import com.example.gbr.repository.UserRepository;
 import com.example.gbr.security.jwt.JwtUtils;
+import com.example.gbr.security.services.UserDetailsImpl;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
