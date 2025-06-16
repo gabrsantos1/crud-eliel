@@ -36,7 +36,6 @@ Este projeto foi desenvolvido como parte de uma disciplina do curso de **Desenvo
       └── main
           └── java
               └── com.example.gbr
-                  ├── user
                   ├── service
                   ├── security
                   ├── repository
