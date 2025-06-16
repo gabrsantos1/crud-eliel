@@ -37,8 +37,13 @@ Este projeto foi desenvolvido como parte de uma disciplina do curso de **Desenvo
           └── java
               └── com.example.gbr
                   ├── user
-                  ├── (soon)
-                  ├── (soon)
+                  ├── service
+                  ├── security
+                  ├── repository
+                  ├── model
+                  ├── dto
+                  ├── controller
+                  ├── config
                   └── GbrApplication.java
 
 ```
@@ -50,7 +55,7 @@ Este projeto foi desenvolvido como parte de uma disciplina do curso de **Desenvo
 - JDK 17+
 - mySQL/PostgreSQL
 - Git
-
+- JWT Secret Key (key-gbr)
 ### Passo a passo
 
 1. Clone o repositório:
@@ -66,6 +71,77 @@ cd example
 cd gbr
 ./mvnw spring-boot:run
 ```
+
+# Documentação das Rotas
+
+## Endpoints de Autenticação
+
+### Registrar novo usuário
+- **URL**: `/api/auth/signup`
+- **Método**: `POST`
+- **Body**:
+```json
+{
+    "name": "Nome do Usuário",
+    "email": "usuario@exemplo.com",
+    "password": "senha123",
+    "role": "ROLE_USER"  // padrão: ROLE_USER
+}
+```
+
+### Login
+- **URL**: `/api/auth/signin`
+- **Método**: `POST`
+- **Body**:
+```json
+{
+    "email": "usuario@exemplo.com",
+    "password": "senha123"
+}
+```
+
+## Endpoints de Usuários
+
+### Listar todos os usuários
+- **URL**: `/api/users/all`
+- **Método**: `GET`
+- **Acesso**: Apenas Admin
+
+### Buscar usuário por ID
+- **URL**: `/api/users/{id}`
+- **Método**: `GET`
+- **Acesso**: Admin ou próprio usuário
+
+### Atualizar usuário
+- **URL**: `/api/users/{id}`
+- **Método**: `PUT`
+- **Acesso**: Admin ou próprio usuário
+- **Body**:
+```json
+{
+    "name": "Nome Atualizado",
+    "email": "atualizado@exemplo.com",
+    "password": "novasenha"  // Opcional
+}
+```
+
+### Deletar usuário
+- **URL**: `/api/users/{id}`
+- **Método**: `DELETE`
+- **Acesso**: Apenas Admin
+
+## Autenticação
+
+Todos os endpoints protegidos requerem um token JWT no cabeçalho:
+```
+Authorization: Bearer <token_jwt>
+```
+
+## Níveis de Acesso
+
+O sistema possui dois níveis de acesso:
+1. `ROLE_USER` - Usuário comum
+2. `ROLE_ADMIN` - Administrador
 
 ### 📝 Licença
 Este projeto está sob a licença MIT. Veja o arquivo LICENSE para mais detalhes.
