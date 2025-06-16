@@ -54,7 +54,7 @@ Este projeto foi desenvolvido como parte de uma disciplina do curso de **Desenvo
 - JDK 17+
 - mySQL/PostgreSQL
 - Git
-- JWT Secret Key (key-gbr)
+- JWT Secret Key (applications.properties)
 ### Passo a passo
 
 1. Clone o repositório:
